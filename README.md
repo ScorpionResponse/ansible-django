@@ -8,7 +8,7 @@ Ansible role to install a Django project.
 Requirements
 ------------
 
-None.
+The django project itself must already contain a manage.py file and a requirements/{{ environment }}.txt file.
 
 Role Variables
 --------------
