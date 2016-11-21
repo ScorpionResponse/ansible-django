@@ -52,9 +52,6 @@ script:
     || (echo 'Idempotence test: fail' && exit 1)
 
   # Test results of role
-  - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm echo $PATH'
-  - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ls /usr/bin/'
-  - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm which git'
 
 after_success:
   # Clean up.
