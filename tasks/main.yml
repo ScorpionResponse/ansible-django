@@ -26,6 +26,11 @@
     force: yes
     accept_hostkey: yes
   notify: ensure ownership
+    
+- name: Install postgres dependencies
+  apt:
+    pkg: libpq-dev
+    state: present
 
 - name: Install project requirements
   pip:
