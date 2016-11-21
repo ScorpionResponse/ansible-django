@@ -29,7 +29,7 @@
 
 - name: Install project requirements
   pip:
-    requirements: "{{ django_base_dir }}/{{ django_project_name }}/requirements/{{ environment }}.txt"
+    requirements: "{{ django_base_dir }}/{{ django_project_name }}/requirements/{{ django_environment }}.txt"
     virtualenv: "{{ django_virtualenv_path }}"
   
 - name: Ensure permissions on manage.py

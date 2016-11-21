@@ -26,7 +26,7 @@ Role Variables
 * `django_project_name`: The name of the project folder.  Default: application
 * `django_virtualenv_path`: The location to install a virtualenv.  Default:
   /srv/venv
-* `environment`: The environment we're installing.  Default: dev
+* `django_environment`: The environment we're installing.  Default: dev
 
 Dependencies
 ------------
