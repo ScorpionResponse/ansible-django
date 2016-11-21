@@ -1,0 +1,13 @@
+---
+
+django_base_dir: /srv
+
+django_user_name: django
+django_group_name: django
+
+django_project_name: application
+django_virtualenv_path: "{{ django_base_dir }}/venv"
+
+django_git_repo: "https://github.com/django/djangoproject.com.git"
+
+environment: dev

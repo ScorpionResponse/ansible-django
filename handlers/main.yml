@@ -1,0 +1,8 @@
+---
+- name: ensure ownership
+  file:
+    path: "{{ django_base_dir }}"
+    state: directory
+    recurse: yes
+    owner: "{{ django_user_name }}"
+    group: "{{ django_group_name }}"
