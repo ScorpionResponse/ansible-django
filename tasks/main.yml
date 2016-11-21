@@ -20,8 +20,8 @@
 
 - name: Checkout django project with git
   git:
-    repo: {{ django_git_repo }}
-    dest: {{ django_base_dir }}/{{ django_project_name }}
+    repo: "{{ django_git_repo }}"
+    dest: "{{ django_base_dir }}/{{ django_project_name }}"
     update: yes
     force: yes
     accept_hostkey: yes
@@ -29,22 +29,22 @@
 
 - name: Install project requirements
   pip:
-    requirements: {{ django_base_dir }}/{{ django_project_name }}/requirements/{{ environment }}.txt
-    virtualenv: {{ django_virtualenv_path }}
+    requirements: "{{ django_base_dir }}/{{ django_project_name }}/requirements/{{ environment }}.txt"
+    virtualenv: "{{ django_virtualenv_path }}"
   
 - name: Ensure permissions on manage.py
   file:
-    path: {{ django_base_dir }}/{{ django_project_name }}/manage.py
+    path: "{{ django_base_dir }}/{{ django_project_name }}/manage.py"
     mode: 0775
 
 - name: Migrate Database
   django_manage:
-    app_path: {{ django_base_dir }}/{{ django_project_name }}
+    app_path: "{{ django_base_dir }}/{{ django_project_name }}"
     command: migrate
-    virtualenv: {{ django_virtualenv_path }}
+    virtualenv: "{{ django_virtualenv_path }}"
 
 - name: Collectstatic 
   django_manage:
-    app_path: {{ django_base_dir }}/{{ django_project_name }}
+    app_path: "{{ django_base_dir }}/{{ django_project_name }}"
     command: collectstatic
-    virtualenv: {{ django_virtualenv_path }}
+    virtualenv: "{{ django_virtualenv_path }}"
