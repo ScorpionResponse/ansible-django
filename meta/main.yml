@@ -22,4 +22,6 @@ galaxy_info:
     - system
     - web
 
-dependencies: []
+dependencies:
+  - ScorpionResponse.git
+  - ScorpionResponse.pip
