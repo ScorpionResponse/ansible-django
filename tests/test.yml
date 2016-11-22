@@ -1,4 +1,6 @@
 ---
 - hosts: all
+  vars:
+    - no_database: True
   roles:
     - role_under_test
