@@ -47,7 +47,7 @@
     app_path: "{{ django_base_dir }}/{{ django_project_name }}"
     command: migrate
     virtualenv: "{{ django_virtualenv_path }}"
-  when: no_database is defined
+  when: no_database is undefined
 
 - name: Collectstatic 
   django_manage:
