@@ -42,6 +42,8 @@ Example Playbook
 Example usage:
 
     - hosts: all
+      vars:
+        - django_git_repo: "https://github.com/myacct/repo.git"
       roles:
          - { role: ScorpionResponse.django }
 
