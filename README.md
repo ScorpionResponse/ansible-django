@@ -20,6 +20,9 @@ Role Variables
 ### Optional
 * `django_base_dir`: The directory which should contain the project.  Default:
   /srv
+* `django_subdirectory`: A path from the root of the repository to the folder
+  containing the django application.  Default: ""  -- If assigned a value, the
+  value should have a trailing slash.
 * `django_user_name`: The user account to own the files. Default:
   django
 * `django_group_name`: The group account to own the files. Default: django
