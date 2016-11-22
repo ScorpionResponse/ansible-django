@@ -2,12 +2,13 @@
 - name: Create Group for django
   group:
     name: "{{ django_group_name }}"
+    system: yes
     state: present
 
 - name: Create User for django
   user:
     name: "{{ django_user_name }}"
-    groups: "{{ django_group_name }}"
+    groups: "{{ django_group_name }},www-data"
     append: yes
 
 - name: Create django base directory
@@ -15,7 +16,7 @@
     path: "{{ django_base_dir }}"
     state: directory
     owner: "{{ django_user_name }}"
-    group: "{{ django_group_name }}"
+    group: "www-data"
     mode: 0775
 
 - name: Checkout django project with git

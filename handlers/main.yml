@@ -5,4 +5,4 @@
     state: directory
     recurse: yes
     owner: "{{ django_user_name }}"
-    group: "{{ django_group_name }}"
+    group: "www-data"
