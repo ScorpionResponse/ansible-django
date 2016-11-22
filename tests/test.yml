@@ -2,7 +2,7 @@
 - hosts: all
   vars:
     - no_database: True
-    - django_git_repo: "git@github.com:ScorpionResponse/freelancefinder.git"
+    - django_git_repo: "https://github.com/ScorpionResponse/freelancefinder.git"
     - django_project_name: "freelancefinder"
     - django_subdirectory: "freelancefinder/"
   roles:
