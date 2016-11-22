@@ -34,23 +34,23 @@
 
 - name: Install project requirements
   pip:
-    requirements: "{{ django_base_dir }}/{{ django_project_name }}/requirements/{{ django_environment }}.txt"
+    requirements: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}requirements/{{ django_environment }}.txt"
     virtualenv: "{{ django_virtualenv_path }}"
   
 - name: Ensure permissions on manage.py
   file:
-    path: "{{ django_base_dir }}/{{ django_project_name }}/manage.py"
+    path: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}manage.py"
     mode: 0775
 
 - name: Migrate Database
   django_manage:
-    app_path: "{{ django_base_dir }}/{{ django_project_name }}"
+    app_path: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}"
     command: migrate
     virtualenv: "{{ django_virtualenv_path }}"
   when: no_database is undefined
 
 - name: Collectstatic 
   django_manage:
-    app_path: "{{ django_base_dir }}/{{ django_project_name }}"
+    app_path: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}"
     command: collectstatic
     virtualenv: "{{ django_virtualenv_path }}"

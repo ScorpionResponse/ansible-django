@@ -6,6 +6,7 @@ django_user_name: django
 django_group_name: django
 
 django_project_name: application
+django_subdirectory: ""
 django_virtualenv_path: "{{ django_base_dir }}/venv"
 
 django_git_repo: "https://github.com/django/djangoproject.com.git"
