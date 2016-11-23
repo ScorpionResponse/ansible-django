@@ -26,6 +26,14 @@
     update: yes
     accept_hostkey: yes
   notify: ensure ownership
+
+- name: Create .env file
+  template:
+    src: django_env.j2
+    dest: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}.env"
+    owner: "{{ django_user_name }}"
+    group: "www-data"
+    mode: 0664
     
 - name: Install postgres dependencies
   apt:

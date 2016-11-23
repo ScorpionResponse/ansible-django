@@ -12,3 +12,10 @@ django_virtualenv_path: "{{ django_base_dir }}/venv"
 django_git_repo: "https://github.com/django/djangoproject.com.git"
 
 django_environment: development
+
+# Django settings
+django_debug: True
+django_secret_key: "abc123"
+django_db_url: "sqlite:///srv/db.sqlite"
+
+django_settings: []
