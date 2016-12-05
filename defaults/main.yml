@@ -18,4 +18,4 @@ django_debug: True
 django_secret_key: "abc123"
 django_db_url: "sqlite:///srv/db.sqlite"
 
-django_settings: []
+django_settings: {}
