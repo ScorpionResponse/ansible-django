@@ -1,7 +1,7 @@
 ---
 - name: ensure ownership
   file:
-    path: "{{ django_base_dir }}"
+    path: "{{ django_base_dir }}/{{ django_project_name }}"
     state: directory
     recurse: yes
     owner: "{{ django_user_name }}"
