@@ -2,6 +2,7 @@
 - name: Set facts for python3
   set_fact:
     pip_executable: "pip3"
+    venv_python: "python3"
   when: 
     - "{{ use_python3 | bool }}"
     - ansible_pkg_mgr == 'apt'
@@ -9,6 +10,7 @@
 - name: Set facts for python2
   set_fact:
     pip_executable: "pip2"
+    venv_python: "python2"
   when: "not {{ use_python3 | bool }}"
 
 - name: Create Group for django
@@ -62,7 +64,7 @@
   pip:
     requirements: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}requirements/{{ django_environment }}.txt"
     virtualenv: "{{ django_virtualenv_path }}"
-    executable: "{{ pip_executable }}"
+    virtualenv_python: "{{ venv_python }}"
   
 - name: Ensure permissions on manage.py
   file:
