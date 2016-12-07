@@ -18,6 +18,6 @@ django_environment: development
 # Django settings
 django_debug: True
 django_secret_key: "abc123"
-django_db_url: "sqlite:///tmp/db.sqlite"
+django_db_url: "sqlite:////tmp/db.sqlite"
 
 django_settings: {}
