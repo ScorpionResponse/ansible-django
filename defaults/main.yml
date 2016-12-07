@@ -1,5 +1,7 @@
 ---
 
+use_python3: False
+
 django_base_dir: /srv
 
 django_user_name: django
@@ -16,6 +18,6 @@ django_environment: development
 # Django settings
 django_debug: True
 django_secret_key: "abc123"
-django_db_url: "sqlite:///srv/db.sqlite"
+django_db_url: "sqlite:///tmp/db.sqlite"
 
 django_settings: {}
