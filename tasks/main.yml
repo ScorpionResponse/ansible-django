@@ -48,8 +48,8 @@
   become: yes
   become_user: "{{ django_user_name }}"
   command: "virtualenv -p /usr/bin/{{ venv_python }} {{ django_virtualenv_path }}"
-    args:
-      creates: "{{ django_virtualenv_path }}"
+  args:
+    creates: "{{ django_virtualenv_path }}"
   when: venv_dir_present.stat.exists == false
 
 - name: Checkout django project with git
