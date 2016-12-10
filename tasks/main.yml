@@ -67,6 +67,11 @@
     group: "www-data"
     mode: 0664
     
+- name: Install postgres dependencies
+  apt:
+    pkg: libpq-dev
+    state: present
+  
 - name: Install project requirements
   become: yes
   become_user: "{{ django_user_name }}"
@@ -75,11 +80,6 @@
     virtualenv: "{{ django_virtualenv_path }}"
     virtualenv_python: "{{ venv_python }}"
 
-- name: Install postgres dependencies
-  apt:
-    pkg: libpq-dev
-    state: present
-  
 - name: Ensure permissions on manage.py
   become: yes
   become_user: "{{ django_user_name }}"
