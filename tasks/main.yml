@@ -49,7 +49,7 @@
 
 - name: Checkout django project with git
   become: yes
-  become_user: {{ django_user_name }}
+  become_user: "{{ django_user_name }}"
   git:
     repo: "{{ django_git_repo }}"
     dest: "{{ django_base_dir }}/{{ django_project_name }}"
@@ -59,7 +59,7 @@
 
 - name: Create .env file
   become: yes
-  become_user: {{ django_user_name }}
+  become_user: "{{ django_user_name }}"
   template:
     src: django_env.j2
     dest: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}.env"
@@ -69,7 +69,7 @@
     
 - name: Install project requirements
   become: yes
-  become_user: {{ django_user_name }}
+  become_user: "{{ django_user_name }}"
   pip:
     requirements: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}requirements/{{ django_environment }}.txt"
     virtualenv: "{{ django_virtualenv_path }}"
@@ -82,14 +82,14 @@
   
 - name: Ensure permissions on manage.py
   become: yes
-  become_user: {{ django_user_name }}
+  become_user: "{{ django_user_name }}"
   file:
     path: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}manage.py"
     mode: 0775
 
 - name: Migrate Database
   become: yes
-  become_user: {{ django_user_name }}
+  become_user: "{{ django_user_name }}"
   django_manage:
     app_path: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}"
     command: migrate
@@ -97,7 +97,7 @@
 
 - name: Collectstatic 
   become: yes
-  become_user: {{ django_user_name }}
+  become_user: "{{ django_user_name }}"
   django_manage:
     app_path: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}"
     command: collectstatic
@@ -105,7 +105,7 @@
 
 - name: Create Django superuser
   become: yes
-  become_user: {{ django_user_name }}
+  become_user: "{{ django_user_name }}"
   shell: ". {{ django_virtualenv_path }}/bin/activate && echo \"from django.contrib.auth.models import User; u = User.objects.create_superuser('{{ django_superuser_name }}', '{{ django_superuser_email }}', '{{ django_superuser_password }}');\" | python manage.py shell"
   args:
     chdir: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}"
