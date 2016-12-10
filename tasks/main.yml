@@ -78,7 +78,7 @@
   pip:
     requirements: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}requirements/{{ django_environment }}.txt"
     virtualenv: "{{ django_virtualenv_path }}"
-    virtualenv_python: "{{ venv_python }}"
+    virtualenv_python: "{{ django_virtualenv_path }}/bin/{{ venv_python }}"
 
 - name: Ensure permissions on manage.py
   become: yes
