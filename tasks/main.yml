@@ -30,14 +30,14 @@
     path: "{{ django_base_dir }}"
   register: base_dir_present
   
-- name: Create django base directory
+- name: Create django base directory or change ownership
   file:
     path: "{{ django_base_dir }}"
     state: directory
     owner: "{{ django_user_name }}"
     group: "www-data"
     mode: 0775
-  when: base_dir_present.stat.exists == False
+  when: (base_dir_present.stat.exists == false or base_dir_present.stat.pw_name == 'root')
 
 - name: Create virtualenv directory
   file:
