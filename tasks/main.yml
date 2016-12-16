@@ -39,6 +39,14 @@
     mode: 0775
   when: (base_dir_present.stat.exists == false or base_dir_present.stat.pw_name == 'root')
 
+- name: Create django log directory
+  file:
+    path: "{{ django_log_dir }}"
+    state: directory
+    owner: "{{ django_user_name }}"
+    group: "www-data"
+    mode: 0775
+
 - name: Check if django_virtualenv_path is present
   stat:
     path: "{{ django_virtualenv_path }}"

@@ -3,6 +3,7 @@
 use_python3: False
 
 django_base_dir: /srv
+django_log_dir: /var/log/django
 
 django_user_name: django
 django_group_name: django
