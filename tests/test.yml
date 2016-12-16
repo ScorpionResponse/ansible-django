@@ -4,5 +4,7 @@
     - django_git_repo: "https://github.com/ScorpionResponse/freelancefinder.git"
     - django_project_name: "freelancefinder"
     - django_subdirectory: "freelancefinder/"
+    - django_settings:
+        REDIS_CELERY_URL: 'redis://localhost:6379/0'
   roles:
     - role_under_test
