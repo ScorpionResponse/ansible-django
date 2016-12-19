@@ -6,3 +6,13 @@
     recurse: yes
     owner: "{{ django_user_name }}"
     group: "www-data"
+
+- name: ensure logs
+  file:
+    path: "{{ django_log_dir }}"
+    state: directory
+    recurse: yes
+    owner: "{{ django_user_name }}"
+    group: "www-data"
+    mode: 2775
+

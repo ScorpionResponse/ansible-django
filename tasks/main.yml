@@ -46,6 +46,7 @@
     owner: "{{ django_user_name }}"
     group: "www-data"
     mode: 2775
+  notify: ensure logs
 
 - name: Check if django_virtualenv_path is present
   stat:
