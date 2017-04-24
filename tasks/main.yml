@@ -4,14 +4,14 @@
     pip_executable: "pip3"
     venv_python: "python3"
   when: 
-    - "{{ use_python3 | bool }}"
+    - "use_python3|bool"
     - ansible_pkg_mgr == 'apt'
 
 - name: Set facts for python2
   set_fact:
     pip_executable: "pip2"
     venv_python: "python2"
-  when: "not {{ use_python3 | bool }}"
+  when: "not use_python3|bool"
 
 - name: Create Group for django
   group:
