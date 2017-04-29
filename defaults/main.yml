@@ -13,6 +13,7 @@ django_subdirectory: ""
 django_virtualenv_path: "{{ django_base_dir }}/venv"
 
 django_git_repo: "https://github.com/django/djangoproject.com.git"
+django_settings_module: 'myproject.settings'
 
 django_environment: development
 
