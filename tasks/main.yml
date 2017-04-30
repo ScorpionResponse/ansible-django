@@ -115,19 +115,12 @@
     command: collectstatic
     virtualenv: "{{ django_virtualenv_path }}"
 
-  #- name: Create Django superuser
-  #  ignore_errors: yes
-  #  become: yes
-  #  become_user: "{{ django_user_name }}"
-  #  shell: ". {{ django_virtualenv_path }}/bin/activate && echo \"from django.contrib.auth.models import User; if not User.objects.filter(username='{{ django_superuser_name }}').exists(): u = User.objects.create_superuser('{{ django_superuser_name }}', '{{ django_superuser_email }}', '{{ django_superuser_password }}');\" | python manage.py shell"
-  #  args:
-  #    chdir: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}"
-  #  when: django_superuser_name is defined
-
 - name: Create Django superuser
   become: yes
   become_user: "{{ django_user_name }}"
-  script: "{{ role_path }}/files/superuser.py \"{{ django_settings_module }}\" \"{{ django_superuser_name }}\" \"{{ django_superuser_email }}\" \"{{ django_superuser_password }}\""
+  script: "PATH={{ django_virtualenv_path }}/bin {{ role_path }}/files/superuser.py \"{{ django_settings_module }}\" \"{{ django_superuser_name }}\" \"{{ django_superuser_email }}\" \"{{ django_superuser_password }}\""
+  args:
+    chdir: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}"
   register: command_result
   failed_when: "'FAILED' in command_result.stdout"
   changed_when: "'CHANGED' in command_result.stdout"
