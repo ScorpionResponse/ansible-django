@@ -46,7 +46,7 @@ script:
     
   # Test role idempotence.
   - idempotence=$(mktemp)
-  - 'sudo docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml --extra-vars "use_python3=${use_python3}" | tee -a ${idempotence}'
+  - 'sudo docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml -vvv --extra-vars "use_python3=${use_python3}" | tee -a ${idempotence}'
   - >
     tail ${idempotence}
     | grep -q 'changed=0.*failed=0'
