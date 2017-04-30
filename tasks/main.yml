@@ -114,8 +114,8 @@
     app_path: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}"
     command: collectstatic
     virtualenv: "{{ django_virtualenv_path }}"
-  register: command_result
-  changed_when: "'0 static files' not in command_result.stdout"
+  register: collectstatic_result
+  changed_when: "'0 static files' not in collectstatic_result.stdout"
 
 - name: Create Django superuser
   become: yes
@@ -126,7 +126,7 @@
     PYTHONPATH: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}"
   args:
     chdir: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}"
-  register: command_result
-  failed_when: "'FAILED' in command_result.stdout"
-  changed_when: "'CHANGED' in command_result.stdout"
+  register: superuser_result
+  failed_when: "'FAILED' in superuser_result.stdout"
+  changed_when: "'CHANGED' in superuser_result.stdout"
   when: django_superuser_name is defined
