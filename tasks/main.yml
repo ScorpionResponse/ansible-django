@@ -122,6 +122,5 @@
   args:
     chdir: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}"
   register: command_result
-  failed_when: "'FAILED' in command_result.stdout"
   changed_when: "'CHANGED' in command_result.stdout"
   when: django_superuser_name is defined
