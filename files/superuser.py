@@ -31,7 +31,8 @@ if __name__ == '__main__':
         application = get_wsgi_application()
 
         create_new_superuser(username, email, password)
-    except Exception:
-        print("An error occurred.")
+    except Exception as e:
+        print("An error occurred: {}".format(e))
+        print("Arguments: {}".format(sys.argv))
         print("FAILED")
         sys.exit(1)
