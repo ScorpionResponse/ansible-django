@@ -118,9 +118,12 @@
 - name: Create Django superuser
   become: yes
   become_user: "{{ django_user_name }}"
-  script: "PATH={{ django_virtualenv_path }}/bin {{ role_path }}/files/superuser.py \"{{ django_settings_module }}\" \"{{ django_superuser_name }}\" \"{{ django_superuser_email }}\" \"{{ django_superuser_password }}\""
+  script: "{{ role_path }}/files/superuser.py \"{{ django_settings_module }}\" \"{{ django_superuser_name }}\" \"{{ django_superuser_email }}\" \"{{ django_superuser_password }}\""
+  environment:
+    PATH: "{{ django_virtualenv_path }}/bin"
   args:
     chdir: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}"
   register: command_result
-  changed_when: "\"CHANGED\" in command_result.stdout"
+  failed_when: "'FAILED' in command_result.stdout"
+  changed_when: "'CHANGED' in command_result.stdout"
   when: django_superuser_name is defined
