@@ -121,6 +121,7 @@
   script: "{{ role_path }}/files/superuser.py \"{{ django_settings_module }}\" \"{{ django_superuser_name }}\" \"{{ django_superuser_email }}\" \"{{ django_superuser_password }}\""
   environment:
     PATH: "{{ django_virtualenv_path }}/bin"
+    PYTHONPATH: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}"
   args:
     chdir: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}"
   register: command_result
