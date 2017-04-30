@@ -114,6 +114,8 @@
     app_path: "{{ django_base_dir }}/{{ django_project_name }}/{{ django_subdirectory }}"
     command: collectstatic
     virtualenv: "{{ django_virtualenv_path }}"
+  register: command_result
+  changed_when: "'0 static files' not in command_result.stdout"
 
 - name: Create Django superuser
   become: yes
