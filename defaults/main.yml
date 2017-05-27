@@ -21,5 +21,6 @@ django_environment: development
 django_debug: True
 django_secret_key: "abc123"
 django_db_url: "sqlite:////tmp/db.sqlite"
+django_email_url: "dummymail://"
 
 django_settings: {}

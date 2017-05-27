@@ -5,6 +5,8 @@ SECRET_KEY='{{ django_secret_key }}'
 
 DATABASE_URL='{{ django_db_url }}'
 
+EMAIL_URL='{{ django_email_url }}'
+
 {% for key, value in django_settings.items() %}
 {% if value is string %}
 {{ key }}='{{ value }}'
