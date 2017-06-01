@@ -67,6 +67,7 @@
   git:
     repo: "{{ django_git_repo }}"
     dest: "{{ django_base_dir }}/{{ django_project_name }}"
+    version: "{{ django_git_branch }}"
     update: yes
     accept_hostkey: yes
   notify: ensure ownership
